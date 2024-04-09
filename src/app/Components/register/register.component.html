@@ -1,0 +1,71 @@
+<section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
+  <h1>Register Now</h1>
+  <Form [formGroup]="RegisterForm" (ngSubmit)="SendRegisterData()">
+
+    <!-- <p>{{RegisterForm.get('name')?.getError('minlength')| json}}</p> -->
+
+
+
+   <div class="mb-2">
+    <label for="name">Name :</label>
+    <input type="text" id="name" formControlName="name" class="form-control">
+
+    <div class="alert alert-danger" *ngIf="RegisterForm.get('name')?.errors && RegisterForm.get('name')?.touched">
+        <p *ngIf="RegisterForm.get('name')?.getError('required')">Name  Required</p>
+        <p *ngIf="RegisterForm.get('name')?.getError('minlength')">Name  minlength 3</p>
+        <p *ngIf="RegisterForm.get('name')?.getError('maxlength')">Name  Maxlength 20</p>
+    </div>
+
+   </div>
+
+   <div class="mb-2">
+    <label for="username">User Name :</label>
+    <input type="text" id="username" formControlName="username" class="form-control">
+
+
+   <div class="alert alert-danger" *ngIf="RegisterForm.get('username')?.errors && RegisterForm.get('username')?.touched">
+      <p *ngIf="RegisterForm.get('username')?.getError('required')">Name  Required</p>
+      <p *ngIf="RegisterForm.get('username')?.getError('minlength')">Name  minlength 3</p>
+      <p *ngIf="RegisterForm.get('username')?.getError('maxlength')">Name  Maxlength 20</p>
+  </div>
+
+
+   </div>
+
+
+   <div class="mb-2">
+    <label for="email">Email :</label>
+    <input type="email" id="email" formControlName="email" class="form-control">
+
+   <div class="alert alert-danger" *ngIf="RegisterForm.get('email')?.errors && RegisterForm.get('email')?.touched">
+      <p *ngIf="RegisterForm.get('email')?.getError('required')">email  Required</p>
+      <p *ngIf="RegisterForm.get('emial')?.getError('email')">email invalid</p>
+
+  </div>
+
+
+   </div>
+
+
+   <div class="mb-2">
+    <label for="Password">Password :</label>
+    <input type="password" id="password" formControlName="password" class="form-control">
+
+   <div class="alert alert-danger" *ngIf="RegisterForm.get('password')?.errors && RegisterForm.get('password')?.touched">
+      <p *ngIf="RegisterForm.get('password')?.getError('required')">Password  Required</p>
+      <p *ngIf="RegisterForm.get('password')?.getError('pattern')">Password not match</p>
+
+  </div>
+
+
+
+   </div>
+
+
+<button class="btn-main" [disabled]="RegisterForm.invalid">Register</button>
+
+<p *ngIf="errormessage" class="alert alert-danger">{{errormessage}}</p>
+
+
+  </Form>
+</section>

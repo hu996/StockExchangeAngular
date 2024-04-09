@@ -1,0 +1,47 @@
+<section>
+<h1>our Products</h1>
+
+<p *ngIf="errormessage" class="alert alert-danger">{{errormessage}}</p>
+
+<div class="d-flex justify-content-between my-3">
+
+
+  <input type="search" class="form-control w-50 mx-auto "
+ placeholder="search withproduct symbole"
+  [(ngModel)]="searchsymbole" #term>
+  <button class="btn-main" (click)="test(term.value)">search</button>
+
+</div>
+<div class="row">
+  <div class="col-md-10">
+
+    <table class="table">
+      <thead>
+       <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>CreatedAt</th>
+        <th>Symbole</th>
+
+       </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let product of Products">
+
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.price}}</td>
+          <td>{{product.createdAt.split('-').slice(0,3).join('-')}}</td>
+          <td>{{product.symbole}}</td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</section>

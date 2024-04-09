@@ -1,0 +1,62 @@
+<section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
+  <h1>Create order</h1>
+  <Form [formGroup]="CreateOrderForm" (ngSubmit)="SendOrderData()">
+
+    <!-- <p>{{CreateOrder.get('name')?.getError('minlength')| json}}</p> -->
+
+
+
+   <div class="mb-2">
+    <label for="itemprice">Item Price :</label>
+    <input type="number" id="itemprice" formControlName="ItemPrice" class="form-control">
+
+    <p *ngIf="CreateOrderForm.get('ItemPrice')?.getError('required')">field  Required</p>
+
+
+   </div>
+
+   <div class="mb-2">
+    <label for="quantity">Quantity :</label>
+    <input type="number" id="quantity" formControlName="Quantity" class="form-control">
+
+    <p *ngIf="CreateOrderForm.get('Quantity')?.getError('required')">field  Required</p>
+
+
+   </div>
+
+
+   <div class="mb-2">
+    <label  for="ordertype">Order Type :</label>
+    <Select class="form-control" formControlName="OrderType" id="ordertype" >
+      <option active disabled>select Option</option>
+      <option value="Sel">Sel</option>
+      <option value="Buy">Buy</option>
+    </Select>
+    <p class="text-danger" *ngIf="CreateOrderForm.get('Ordertype')?.getError('required')">field  Required</p>
+
+   </div>
+
+
+
+   <div class="mb-2">
+
+<label for="stocksymbol">Stock Symbole</label>
+<select class="form-control" formArrayName="symbole" id="stocksymbol">
+
+<option *ngFor="let symbole of stockData" [value]="symbole.id">{{symbole.symbole}}</option>
+
+</select>
+
+   </div>
+
+
+
+
+
+<button class="btn-main">Submit</button>
+
+<!-- <p *ngIf="errormessage" class="alert alert-danger">{{errormessage}}</p> -->
+
+
+  </Form>
+</section>

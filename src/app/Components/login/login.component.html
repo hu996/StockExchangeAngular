@@ -1,0 +1,52 @@
+<section class="bg-main-light p-4 rounded my-3 w-75 mx-auto">
+  <h1>Register Now</h1>
+  <Form [formGroup]="LoginForm" (ngSubmit)="SendLoginData()">
+
+    <!-- <p>{{LoginForm.get('name')?.getError('minlength')| json}}</p> -->
+
+
+
+
+
+   <div class="mb-2">
+    <label for="username">User Name :</label>
+    <input type="text" id="username" formControlName="username" class="form-control">
+
+
+   <div class="alert alert-danger" *ngIf="LoginForm.get('username')?.errors && LoginForm.get('username')?.touched">
+      <p *ngIf="LoginForm.get('username')?.getError('required')">Name  Required</p>
+      <p *ngIf="LoginForm.get('username')?.getError('minlength')">Name  minlength 3</p>
+      <p *ngIf="LoginForm.get('username')?.getError('maxlength')">Name  Maxlength 20</p>
+  </div>
+
+
+   </div>
+
+
+
+
+
+
+
+   <div class="mb-2">
+    <label for="Password">Password :</label>
+    <input type="password" id="password" formControlName="password" class="form-control">
+
+   <div class="alert alert-danger" *ngIf="LoginForm.get('password')?.errors && LoginForm.get('password')?.touched">
+      <p *ngIf="LoginForm.get('password')?.getError('required')">Password  Required</p>
+
+
+  </div>
+
+
+
+   </div>
+
+
+<button class="btn-main" [disabled]="LoginForm.invalid">Login</button>
+
+<p *ngIf="errormessage" class="alert alert-danger">{{errormessage}}</p>
+
+
+  </Form>
+</section>

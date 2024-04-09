@@ -1,0 +1,40 @@
+
+<h1>Orders</h1>
+
+<button class="btn-main d-block ms-auto"  routerLink="/createorder">Create Ordere</button>
+<div class="row">
+  <div class="col-md-10">
+
+    <table class="table">
+      <thead>
+       <tr>
+        <th>price</th>
+        <th>Quantity</th>
+        <th>TotalPrice</th>
+        <th>Order Type</th>
+        <th>STock Symbole</th>
+        <th>Creation Date</th>
+
+       </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let order of OrdersData">
+
+          <td>{{order.itemPrice}}</td>
+          <td>{{order.quantity}}</td>
+          <td>{{order.totalPrice}}</td>
+          <td>{{order.orderType}}</td>
+          <td>{{order.symbole}}</td>
+          <td>{{order.createdAt}}</td>
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+
